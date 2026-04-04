@@ -258,6 +258,251 @@
 .feature-card h3 { margin: 0 0 0.5rem; font-size: 1.15rem; }
 .feature-card p { margin: 0; color: var(--m99-muted); font-size: 0.98rem; }
 
+/* Game / lobby tile visual placeholders — swap for real thumbnails when assets exist */
+.game-placeholder {
+  --gp-line: rgba(57, 255, 20, 0.1);
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-md);
+  border: 1px dashed rgba(57, 255, 20, 0.28);
+  background: linear-gradient(165deg, var(--m99-elevated) 0%, var(--m99-deep) 55%, #061208 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.game-placeholder__label {
+  position: relative;
+  z-index: 2;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--m99-muted);
+  padding: 0.3rem 0.55rem;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(57, 255, 20, 0.14);
+}
+
+.game-placeholder--slot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(90deg, transparent 0px, transparent 13px, var(--gp-line) 13px, var(--gp-line) 14px),
+    linear-gradient(180deg, rgba(57, 255, 20, 0.07) 0%, transparent 42%);
+  pointer-events: none;
+}
+.game-placeholder--slot::after {
+  content: "";
+  position: absolute;
+  bottom: 11%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 58%;
+  height: 24%;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(57, 255, 20, 0.18);
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(57, 255, 20, 0.12) 0px,
+    rgba(57, 255, 20, 0.12) 5px,
+    transparent 5px,
+    transparent 12px
+  );
+  pointer-events: none;
+}
+
+.game-placeholder--live::before {
+  content: "";
+  position: absolute;
+  inset: -25%;
+  background:
+    radial-gradient(circle at 50% 52%, rgba(57, 255, 20, 0.12) 0%, transparent 38%),
+    conic-gradient(from 200deg at 50% 55%, rgba(57, 255, 20, 0.05), transparent, rgba(57, 255, 20, 0.05));
+  pointer-events: none;
+}
+.game-placeholder--live::after {
+  content: "";
+  position: absolute;
+  width: 34%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid rgba(57, 255, 20, 0.22);
+  box-shadow: inset 0 0 24px rgba(57, 255, 20, 0.06);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.game-placeholder--table::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(8, 40, 22, 0.9) 0%, #050806 100%),
+    repeating-linear-gradient(0deg, transparent, transparent 11px, rgba(57, 255, 20, 0.04) 11px, rgba(57, 255, 20, 0.04) 12px);
+  pointer-events: none;
+}
+.game-placeholder--table::after {
+  content: "";
+  position: absolute;
+  width: 22%;
+  height: 32%;
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%) rotate(8deg);
+  border-radius: 4px;
+  border: 1px solid rgba(248, 250, 252, 0.15);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), transparent);
+  box-shadow: -14px 10px 0 -2px rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.game-placeholder--instant::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, transparent 35%, rgba(57, 255, 20, 0.09) 50%, transparent 65%);
+  pointer-events: none;
+}
+.game-placeholder--instant::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  bottom: 22%;
+  width: 80%;
+  height: 2px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, var(--m99-gold-dim), var(--m99-gold), var(--m99-gold-dim));
+  transform-origin: left center;
+  transform: rotate(-10deg);
+  box-shadow: 0 -36px 0 -16px rgba(57, 255, 20, 0.1);
+  pointer-events: none;
+}
+
+.game-placeholder--arcade::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(57, 255, 20, 0.1) 0%, transparent 45%),
+    repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg 8deg, rgba(57, 255, 20, 0.04) 8deg 9deg);
+  pointer-events: none;
+}
+.game-placeholder--arcade::after {
+  content: "";
+  position: absolute;
+  width: 28%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid rgba(57, 255, 20, 0.2);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.game-placeholder--wide {
+  aspect-ratio: 21 / 9;
+}
+
+.game-placeholder--sm {
+  aspect-ratio: 1;
+  min-height: 0;
+  border-radius: var(--radius-sm);
+}
+.game-placeholder--sm .game-placeholder__label {
+  font-size: 0.48rem;
+  letter-spacing: 0.1em;
+  padding: 0.2rem 0.4rem;
+  text-align: center;
+  max-width: 90%;
+  line-height: 1.25;
+}
+
+.game-placeholder-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+@media (min-width: 560px) {
+  .game-placeholder-row { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 900px) {
+  .game-placeholder-row { grid-template-columns: repeat(6, 1fr); }
+}
+.game-placeholder-row.game-placeholder-row--4 {
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 720px) {
+  .game-placeholder-row.game-placeholder-row--4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+.feature-card--game {
+  padding-top: 0;
+}
+.feature-card--game .game-placeholder {
+  margin: calc(-1 * var(--space-md)) calc(-1 * var(--space-md)) var(--space-md);
+  width: auto;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+
+/* Optional class when :has() is unavailable — add .game-placeholder--media alongside <picture> */
+.game-placeholder:has(picture),
+.game-placeholder:has(> img),
+.game-placeholder.game-placeholder--media {
+  display: block;
+  padding: 0;
+  border-style: solid;
+  border-color: rgba(57, 255, 20, 0.22);
+  background: var(--m99-deep);
+}
+.game-placeholder:has(picture)::before,
+.game-placeholder:has(picture)::after,
+.game-placeholder:has(> img)::before,
+.game-placeholder:has(> img)::after,
+.game-placeholder.game-placeholder--media::before,
+.game-placeholder.game-placeholder--media::after {
+  display: none;
+}
+.game-placeholder:has(picture) .game-placeholder__label,
+.game-placeholder:has(> img) .game-placeholder__label,
+.game-placeholder.game-placeholder--media .game-placeholder__label {
+  display: none;
+}
+.game-placeholder picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  line-height: 0;
+}
+.game-placeholder picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.game-placeholder > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .zigzag { display: flex; flex-direction: column; gap: var(--space-md); }
 .zigzag__row {
   display: grid;
