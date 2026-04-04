@@ -215,6 +215,17 @@
 }
 .stat-pill__num.is-counting { min-width: 4ch; display: inline-block; }
 .stat-pill__label { font-size: 0.8rem; color: var(--m99-muted); margin-top: 0.25rem; }
+.stats-band--flush { margin-top: 0; }
+
+/* Indicative lobby / catalogue stats — pair with .lobby-disclaimer in HTML */
+.lobby-disclaimer {
+  font-size: 0.85rem;
+  color: var(--m99-muted);
+  margin: var(--space-md) 0 0;
+  max-width: 78ch;
+  line-height: 1.55;
+}
+.lobby-disclaimer strong { color: var(--m99-text); font-weight: 600; }
 
 .card-grid {
   display: grid;
