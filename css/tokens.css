@@ -24,6 +24,11 @@
   --space-md: 1.25rem;
   --space-lg: 2rem;
   --space-xl: 3.5rem;
+  /* Layout rhythm (vertical stacking) */
+  --section-pad-y: 1.75rem;
+  --section-pad-y-first: 2rem;
+  --section-pad-y-tight: 1.25rem;
+  --stack-pull: 0.5rem;
   --max: 1180px;
   --transition: 0.25s ease;
 }
