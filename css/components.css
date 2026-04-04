@@ -46,7 +46,7 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(12, 6, 24, 0.88);
+  background: rgba(2, 2, 2, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--m99-border);
 }
@@ -78,8 +78,8 @@
   font-weight: 600;
   font-size: 0.9rem;
 }
-.nav__link:hover { color: var(--m99-text); background: rgba(124, 58, 237, 0.12); }
-.nav__link--active { color: var(--m99-gold); background: rgba(245, 183, 58, 0.1); }
+.nav__link:hover { color: var(--m99-text); background: rgba(57, 255, 20, 0.1); }
+.nav__link--active { color: var(--m99-gold); background: rgba(57, 255, 20, 0.12); }
 .header__cta {
   display: none;
   padding: 0.65rem 1.25rem;
@@ -89,7 +89,7 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   background: linear-gradient(135deg, var(--m99-gold), var(--m99-gold-dim));
-  color: #1a0a2e;
+  color: var(--m99-on-neon);
   text-decoration: none;
   box-shadow: var(--m99-glow);
 }
@@ -122,7 +122,7 @@
   text-decoration: none;
   border-radius: var(--radius-sm);
 }
-.mobile-menu__link:hover { background: rgba(124, 58, 237, 0.15); }
+.mobile-menu__link:hover { background: rgba(57, 255, 20, 0.1); }
 .mobile-menu__link--active { color: var(--m99-gold); }
 
 .hero {
@@ -144,7 +144,7 @@
   gap: 0.5rem;
   padding: 0.35rem 0.85rem;
   border-radius: 999px;
-  background: rgba(124, 58, 237, 0.2);
+  background: rgba(57, 255, 20, 0.12);
   border: 1px solid var(--m99-border);
   font-size: 0.8rem;
   font-weight: 600;
@@ -174,16 +174,16 @@
   transition: transform var(--transition), box-shadow var(--transition);
 }
 .btn--primary {
-  background: linear-gradient(135deg, var(--m99-accent), #5b21b6);
-  color: white;
+  background: linear-gradient(135deg, var(--m99-gold-dim), var(--m99-gold));
+  color: var(--m99-on-neon);
   box-shadow: var(--m99-glow);
 }
-.btn--primary:hover { transform: translateY(-2px); color: white; }
+.btn--primary:hover { transform: translateY(-2px); color: var(--m99-on-neon); }
 .btn--gold {
-  background: linear-gradient(135deg, var(--m99-gold), var(--m99-gold-dim));
-  color: #1a0a2e;
+  background: linear-gradient(135deg, var(--m99-accent), var(--m99-gold-dim));
+  color: var(--m99-on-neon);
 }
-.btn--gold:hover { transform: translateY(-2px); color: #1a0a2e; }
+.btn--gold:hover { transform: translateY(-2px); color: var(--m99-on-neon); }
 .btn--ghost {
   background: transparent;
   border: 1px solid var(--m99-border);
@@ -235,12 +235,12 @@
   padding: var(--space-md);
   transition: border-color var(--transition), transform var(--transition);
 }
-.feature-card:hover { border-color: rgba(245, 183, 58, 0.45); transform: translateY(-3px); }
+.feature-card:hover { border-color: rgba(57, 255, 20, 0.45); transform: translateY(-3px); }
 .feature-card__icon {
   width: 48px; height: 48px;
   display: flex; align-items: center; justify-content: center;
   border-radius: var(--radius-md);
-  background: rgba(124, 58, 237, 0.2);
+  background: rgba(57, 255, 20, 0.14);
   color: var(--m99-accent-bright);
   margin-bottom: var(--space-sm);
 }
@@ -293,7 +293,7 @@
   height: 2.25rem;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--m99-gold), var(--m99-gold-dim));
-  color: #1a0a2e;
+  color: var(--m99-on-neon);
   font-family: var(--font-display);
   font-weight: 700;
   display: flex;
@@ -446,9 +446,9 @@
   font-size: 0.9rem;
 }
 .tabs__btn[aria-selected="true"] {
-  background: rgba(124, 58, 237, 0.35);
+  background: rgba(57, 255, 20, 0.18);
   color: var(--m99-text);
-  border-color: var(--m99-accent);
+  border-color: var(--m99-gold);
 }
 .tab-panel { display: none; }
 .tab-panel.is-active { display: block; }
@@ -457,7 +457,7 @@
   margin: 0;
   padding: var(--space-md) var(--space-md);
   border-radius: var(--radius-xl);
-  background: linear-gradient(135deg, rgba(124, 58, 237, 0.35), rgba(245, 183, 58, 0.12));
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.12), rgba(0, 0, 0, 0.45));
   border: 1px solid var(--m99-border);
   text-align: center;
 }
@@ -471,7 +471,7 @@
   margin-top: var(--space-md);
   padding: var(--space-lg) 0 var(--space-md);
   border-top: 1px solid var(--m99-border);
-  background: #080410;
+  background: #030303;
 }
 .footer__grid {
   display: grid;

@@ -1,18 +1,25 @@
-/* M99Game design tokens — modular theme layer */
+/* M99Game design tokens — black + neon green theme */
 :root {
-  --m99-deep: #0c0618;
-  --m99-panel: #16102a;
-  --m99-elevated: #1f1638;
-  --m99-accent: #7c3aed;
-  --m99-accent-bright: #a78bfa;
-  --m99-gold: #f5b73a;
-  --m99-gold-dim: #c99a2e;
-  --m99-mint: #34d399;
-  --m99-danger: #f87171;
-  --m99-text: #f8fafc;
-  --m99-muted: #a5b4c1;
-  --m99-border: rgba(167, 139, 250, 0.22);
-  --m99-glow: 0 0 32px rgba(124, 58, 237, 0.35);
+  --m99-deep: #020202;
+  --m99-panel: #0a0a0a;
+  --m99-elevated: #121212;
+  --m99-accent: #2ae62a;
+  --m99-accent-bright: #6bff52;
+  /* Primary highlight (kept as --m99-*-gold names for existing selectors) */
+  --m99-gold: #39ff14;
+  --m99-gold-dim: #26c70f;
+  --m99-mint: #7fff6a;
+  --m99-danger: #ff4d4d;
+  --m99-text: #e8f8ea;
+  --m99-muted: #8fa892;
+  --m99-border: rgba(57, 255, 20, 0.2);
+  --m99-glow: 0 0 32px rgba(57, 255, 20, 0.4);
+  /* Text on neon fills (buttons, badges) */
+  --m99-on-neon: #050505;
+  /* Alternating section bands over the page background */
+  --m99-surface-band: rgba(0, 0, 0, 0.52);
+  --m99-surface-band-strong: rgba(0, 0, 0, 0.7);
+  --m99-surface-band-soft: rgba(0, 0, 0, 0.38);
   --font-sans: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-display: "Sora", var(--font-sans);
   --radius-sm: 6px;
