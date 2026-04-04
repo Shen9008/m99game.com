@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="ogt ogd">
+  <title id="ogt">M99Game</title>
+  <desc id="ogd">M99Game player guide  slots, live casino, bonuses</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#030303"/>
+      <stop offset="1" stop-color="#0a180c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="#39ff14" opacity="0.6"/>
+  <text x="80" y="280" fill="#e8f8ea" font-family="system-ui,Segoe UI,sans-serif" font-size="82" font-weight="700">M99Game</text>
+  <text x="80" y="370" fill="#8fa892" font-family="system-ui,Segoe UI,sans-serif" font-size="32">Slots · Live casino · Bonuses · Player guides</text>
+  <text x="80" y="520" fill="#39ff14" font-family="system-ui,Segoe UI,sans-serif" font-size="22" opacity="0.85">m99game.com</text>
+</svg>
