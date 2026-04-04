@@ -1,0 +1,20 @@
+{
+  "name": "m99game",
+  "version": "1.0.0",
+  "description": "M99Game (m99game.com) — modular SEO-first casino player hub",
+  "private": true,
+  "scripts": {
+    "deploy": "npx wrangler pages deploy . --project-name=m99game --branch=main"
+  },
+  "keywords": [
+    "m99",
+    "m99game",
+    "m99 casino",
+    "online casino",
+    "SEO"
+  ],
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "wrangler": "^4.80.0"
+  }
+}
