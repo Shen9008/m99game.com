@@ -31,11 +31,11 @@
   --space-md: 1.25rem;
   --space-lg: 2rem;
   --space-xl: 3.5rem;
-  /* Layout rhythm (vertical stacking) */
-  --section-pad-y: 1.75rem;
-  --section-pad-y-first: 2rem;
-  --section-pad-y-tight: 1.25rem;
-  --stack-pull: 0.5rem;
+  /* Layout rhythm (vertical stacking) — generous gaps between sections for readability */
+  --section-pad-y: clamp(2.25rem, 5vw, 3.25rem);
+  --section-pad-y-first: clamp(2.5rem, 5.5vw, 3.5rem);
+  --section-pad-y-tight: clamp(1.75rem, 3.5vw, 2.5rem);
+  --stack-pull: clamp(1rem, 2.5vw, 1.85rem);
   --max: 1180px;
   --transition: 0.25s ease;
 }
