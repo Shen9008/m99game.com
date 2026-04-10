@@ -69,6 +69,36 @@
   text-decoration: none;
 }
 .logo span { color: var(--m99-gold); }
+.logo--brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.logo__mark {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid var(--m99-border);
+  background: var(--m99-panel);
+}
+.hero-banner-img {
+  width: 100%;
+  max-height: min(420px, 52vh);
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--m99-border);
+  display: block;
+}
+.hero-infographic {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(57, 255, 20, 0.2);
+}
 .nav { display: none; }
 @media (min-width: 960px) {
   .nav { display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; }

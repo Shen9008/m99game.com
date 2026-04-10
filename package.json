@@ -4,6 +4,7 @@
   "description": "M99Game (m99game.com) — modular SEO-first casino player hub",
   "private": true,
   "scripts": {
+    "build:images": "node scripts/build-webp.mjs",
     "deploy": "npx wrangler pages deploy . --project-name=m99game --branch=main"
   },
   "keywords": [
@@ -15,6 +16,7 @@
   ],
   "license": "UNLICENSED",
   "devDependencies": {
+    "sharp": "^0.34.5",
     "wrangler": "^4.80.0"
   }
 }
