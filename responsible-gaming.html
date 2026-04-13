@@ -42,12 +42,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <script defer src="js/load-partials.js"></script>
   <script defer src="js/main.js"></script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Article","headline":"Responsible gaming — limits, signals, and help for M99 players","description":"Safer play on m99: limits, warning signs, self-exclusion, and where to get help.","inLanguage":"en","url":"https://m99game.com/responsible-gaming.html","author":{"@type":"Organization","name":"M99Game"},"publisher":{"@type":"Organization","name":"M99Game","logo":{"@type":"ImageObject","url":"https://m99game.com/images/webp/logo-m99.webp"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://m99game.com/responsible-gaming.html"}}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
-    {"@type":"ListItem","position":1,"name":"Home","item":"https://m99game.com/"},
-    {"@type":"ListItem","position":2,"name":"Responsible Gaming","item":"https://m99game.com/responsible-gaming.html"}
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"Organization","@id":"https://m99game.com/#organization","name":"M99Game","url":"https://m99game.com/","logo":{"@type":"ImageObject","url":"https://m99game.com/images/webp/logo-m99.webp","width":160,"height":160}},
+    {"@type":"WebSite","@id":"https://m99game.com/#website","name":"M99Game","url":"https://m99game.com/","publisher":{"@id":"https://m99game.com/#organization"}},
+    {"@type":"BreadcrumbList","@id":"https://m99game.com/responsible-gaming.html#breadcrumb","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://m99game.com/"},
+      {"@type":"ListItem","position":2,"name":"Responsible Gaming","item":"https://m99game.com/responsible-gaming.html"}
+    ]},
+    {"@type":"WebPage","@id":"https://m99game.com/responsible-gaming.html#webpage","url":"https://m99game.com/responsible-gaming.html","name":"Responsible Gaming | M99 — Play Safe, Get Help","description":"If m99 play is getting heavy, you are not alone. Limits, warning signs, self-exclusion, and free confidential help—no promo noise, just support.","isPartOf":{"@id":"https://m99game.com/#website"},"breadcrumb":{"@id":"https://m99game.com/responsible-gaming.html#breadcrumb"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://m99game.com/images/webp/hero-responsible-gaming.webp","width":720,"height":400},"inLanguage":"en-US","hasPart":{"@id":"https://m99game.com/responsible-gaming.html#faqpage"}},
+    {"@type":"Article","@id":"https://m99game.com/responsible-gaming.html#article","headline":"Responsible gaming — limits, signals, and help for M99 players","description":"Safer play on m99: limits, warning signs, self-exclusion, and where to get help.","url":"https://m99game.com/responsible-gaming.html","inLanguage":"en-US","articleSection":"Responsible gambling","image":{"@type":"ImageObject","url":"https://m99game.com/images/webp/hero-responsible-gaming.webp","width":720,"height":400},"datePublished":"2026-01-01","dateModified":"2026-04-04","author":{"@id":"https://m99game.com/#organization"},"publisher":{"@id":"https://m99game.com/#organization"},"mainEntityOfPage":{"@id":"https://m99game.com/responsible-gaming.html#webpage"}}
   ]}
   </script>
 </head>
@@ -162,5 +165,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
   </main>
   <div id="partial-footer"></div>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","@id":"https://m99game.com/responsible-gaming.html#faqpage","url":"https://m99game.com/responsible-gaming.html","mainEntityOfPage":{"@id":"https://m99game.com/responsible-gaming.html#webpage"},"inLanguage":"en-US","mainEntity":[
+    {"@type":"Question","name":"How do I know if my m99 casino habit is slipping?","acceptedAnswer":{"@type":"Answer","text":"Red flags: chasing losses, borrowing to play, hiding time or money, snapping when someone mentions cutting back, missing work or plans because of sessions. If a couple of those hit home, pause deposits and talk to someone—friend, counsellor, or a helpline below."}},
+    {"@type":"Question","name":"What actually works to slow me down?","acceptedAnswer":{"@type":"Answer","text":"Stack tools: deposit caps, loss limits, session timers, cooling-off periods. Write your rules on paper. Automate what the site allows; use phone alarms for the rest. The combo beats any single setting."}},
+    {"@type":"Question","name":"Is self-exclusion really forever?","acceptedAnswer":{"@type":"Answer","text":"Cool-offs are shorter pauses. Full self-exclusion is meant to be serious friction—that's the point. Use in-app tools plus national registries where you live. It's protection, not punishment."}}
+  ]}
+  </script>
 </body>
 </html>

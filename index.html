@@ -46,13 +46,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <script defer src="js/main.js"></script>
 
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebSite","name":"M99Game","url":"https://m99game.com/","inLanguage":"en","description":"Player guide to M99: slots, live casino, promotions, and responsible play.","publisher":{"@type":"Organization","name":"M99Game","url":"https://m99game.com/","logo":{"@type":"ImageObject","url":"https://m99game.com/images/webp/logo-m99.webp"}}}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"M99Game","url":"https://m99game.com/","logo":{"@type":"ImageObject","url":"https://m99game.com/images/webp/logo-m99.webp"},"description":"Information for players exploring M99 and the m99game experience."}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://m99game.com/"}]}
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"Organization","@id":"https://m99game.com/#organization","name":"M99Game","url":"https://m99game.com/","description":"Independent player information about M99, m99game, slots, live casino, bonuses, and responsible play.","logo":{"@type":"ImageObject","url":"https://m99game.com/images/webp/logo-m99.webp","width":160,"height":160}},
+    {"@type":"WebSite","@id":"https://m99game.com/#website","name":"M99Game","url":"https://m99game.com/","description":"Player guide to M99: slots, live casino, promotions, and responsible play.","publisher":{"@id":"https://m99game.com/#organization"},"inLanguage":"en-US"},
+    {"@type":"WebPage","@id":"https://m99game.com/#webpage","url":"https://m99game.com/","name":"M99Game | Play M99 Online — Slots, Live Casino \u0026 Bonuses","description":"Thinking about M99? Here is what you get: slots, live dealers, promos, and straight talk on bankroll, bonuses, and safer play—so you can enjoy m99 game nights your way.","isPartOf":{"@id":"https://m99game.com/#website"},"about":{"@id":"https://m99game.com/#organization"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://m99game.com/images/webp/og-share.webp","width":1200,"height":630},"inLanguage":"en-US","breadcrumb":{"@id":"https://m99game.com/#breadcrumb"},"hasPart":{"@id":"https://m99game.com/#faqpage"}},
+    {"@type":"BreadcrumbList","@id":"https://m99game.com/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://m99game.com/"}]}
+  ]}
   </script>
 </head>
 <body data-page="index">
@@ -384,7 +383,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div id="partial-footer"></div>
 
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@context":"https://schema.org","@type":"FAQPage","@id":"https://m99game.com/#faqpage","url":"https://m99game.com/","mainEntityOfPage":{"@id":"https://m99game.com/#webpage"},"inLanguage":"en-US","mainEntity":[
     {"@type":"Question","name":"Is \"m99 game\" the same as \"m99game\"?","acceptedAnswer":{"@type":"Answer","text":"People type it differently; use the official site you trust with a secured account and limits set."}},
     {"@type":"Question","name":"What should I do before I play m99 slots?","acceptedAnswer":{"@type":"Answer","text":"Check game volatility and RTP if shown, set a spend limit, and read bonus rules if using promo cash."}},
     {"@type":"Question","name":"Can I play on my phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use official apps or the real mobile site, avoid risky Wi-Fi for payments, and protect your login."}},
