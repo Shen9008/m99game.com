@@ -254,7 +254,7 @@
 .stat-pill__label { font-size: 0.8rem; color: var(--m99-muted); margin-top: 0.25rem; }
 .stats-band--flush { margin-top: 0; }
 
-/* Indicative lobby / catalogue stats — pair with .lobby-disclaimer in HTML */
+/* Indicative lobby / catalogue stats - pair with .lobby-disclaimer in HTML */
 .lobby-disclaimer {
   font-size: 0.85rem;
   color: var(--m99-muted);
@@ -268,6 +268,7 @@
   display: grid;
   gap: var(--space-md);
   grid-template-columns: 1fr;
+  align-items: stretch;
 }
 @media (min-width: 640px) {
   .card-grid--2 { grid-template-columns: repeat(2, 1fr); gap: var(--space-lg); }
@@ -295,7 +296,7 @@
 .feature-card h3 { margin: 0 0 0.6rem; font-size: 1.15rem; }
 .feature-card p { margin: 0; color: var(--m99-muted); font-size: 0.98rem; line-height: 1.65; }
 
-/* Game / lobby tile visual placeholders — swap for real thumbnails when assets exist */
+/* Game / lobby tile visual placeholders - swap for real thumbnails when assets exist */
 .game-placeholder {
   --gp-line: rgba(57, 255, 20, 0.1);
   aspect-ratio: 16 / 10;
@@ -480,19 +481,35 @@
   .game-placeholder-row.game-placeholder-row--4 { grid-template-columns: repeat(4, 1fr); }
 }
 
-.feature-card--game {
-  padding-top: 0;
+.feature-card.feature-card--game {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
 }
-.feature-card--game .game-placeholder {
-  margin: calc(-1 * var(--space-md)) calc(-1 * var(--space-md)) var(--space-md);
-  width: auto;
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+.feature-card.feature-card--game .game-placeholder {
+  flex-shrink: 0;
+  margin: 0;
+  width: 100%;
+  border-radius: 0;
   border-left: none;
   border-right: none;
   border-top: none;
+  border-bottom: 1px solid var(--m99-border);
+}
+.feature-card.feature-card--game h3 {
+  margin: var(--space-md) var(--space-md) 0.6rem;
+  flex-shrink: 0;
+}
+.feature-card.feature-card--game p {
+  margin: 0 var(--space-md) var(--space-md);
+  flex-grow: 1;
+  min-height: 0;
 }
 
-/* Optional class when :has() is unavailable — add .game-placeholder--media alongside <picture> */
+/* Optional class when :has() is unavailable - add .game-placeholder--media alongside <picture> */
 .game-placeholder:has(picture),
 .game-placeholder:has(> img),
 .game-placeholder.game-placeholder--media {
@@ -597,7 +614,12 @@
 .listicle h3 { margin: 0 0 0.35rem; font-size: 1.05rem; }
 .listicle p { margin: 0; color: var(--m99-muted); font-size: 0.95rem; }
 
-/* Simple stacked cards (no numbered badge) — use instead of .listicle for short principle lines */
+/* Space between numbered listicle block and following body copy */
+.listicle + .prose:not(.flow-gap-top) {
+  margin-top: var(--space-xl);
+}
+
+/* Simple stacked cards (no numbered badge) - use instead of .listicle for short principle lines */
 .principle-list {
   list-style: none;
   padding: 0;
@@ -677,7 +699,23 @@
 .compare-table th { background: var(--m99-elevated); color: var(--m99-gold); font-weight: 700; }
 .compare-table tr:last-child td { border-bottom: none; }
 
-.faq { max-width: 720px; margin: 0 auto; }
+/* FAQ: align eyebrow + title + accordion; width follows .container (--max) */
+.faq-block {
+  width: 100%;
+}
+.faq-block .section__eyebrow {
+  display: block;
+  text-align: center;
+  margin-bottom: var(--space-sm);
+}
+.faq-block .section__title {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--space-lg);
+}
+
+.faq { margin: 0; max-width: none; }
 .faq-item {
   border: 1px solid var(--m99-border);
   border-radius: var(--radius-md);
@@ -725,9 +763,6 @@
   line-height: 1.6;
 }
 .faq-item.is-open .faq-item__a { display: block; }
-
-#faq .section__eyebrow { margin-bottom: var(--space-xs); }
-#faq .section__title { margin-bottom: var(--space-md); text-align: center; }
 
 .tabs {
   display: flex;
@@ -837,7 +872,10 @@
 .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-.prose { max-width: 70ch; }
+/* Use inside .container only — never combine .container.prose on one node (max-width fight with --max). Fills container like the header bar for consistent edges. */
+.prose { max-width: none; }
+/* Opt-in ~70ch reading column when you explicitly want a narrow measure */
+.prose--measure { max-width: 70ch; }
 .prose p { margin: 0 0 1rem; color: var(--m99-muted); line-height: 1.7; }
 .prose p:last-child { margin-bottom: 0; }
 .prose h2 { font-family: var(--font-display); color: var(--m99-text); margin: var(--space-lg) 0 var(--space-sm); font-size: 1.5rem; line-height: 1.25; }
@@ -863,3 +901,64 @@
 .toc h2 { margin: 0 0 var(--space-sm); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--m99-gold); }
 .toc a { display: block; padding: 0.35rem 0; color: var(--m99-muted); text-decoration: none; font-size: 0.9rem; }
 .toc a:hover { color: var(--m99-text); }
+
+/* Fixed back-to-top (injected by main.js) */
+.scroll-top {
+  position: fixed;
+  z-index: 60;
+  right: max(var(--space-md), env(safe-area-inset-right));
+  bottom: max(var(--space-md), env(safe-area-inset-bottom));
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--m99-border);
+  border-radius: var(--radius-md);
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(10px);
+  color: var(--m99-gold);
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45), 0 0 28px rgba(57, 255, 20, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition:
+    opacity var(--transition),
+    visibility var(--transition),
+    transform var(--transition),
+    border-color var(--transition),
+    color var(--transition);
+}
+
+.scroll-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top:hover {
+  border-color: var(--m99-gold);
+  color: var(--m99-accent-bright);
+}
+
+.scroll-top:focus-visible {
+  outline: 2px solid var(--m99-gold);
+  outline-offset: 3px;
+}
+
+.scroll-top .icon {
+  width: 28px;
+  height: 28px;
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-top {
+    transition: none;
+  }
+  .scroll-top.is-visible {
+    transform: translateY(0);
+  }
+}

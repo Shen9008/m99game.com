@@ -1,5 +1,5 @@
 /**
- * M99Game — FAQ accordion, tabs, scroll reveals, stat counters, footer year.
+ * M99Game - FAQ accordion, tabs, scroll reveals, stat counters, footer year.
  */
 (function () {
   'use strict';
@@ -63,6 +63,36 @@
     els.forEach(function (el) { io.observe(el); });
   }
 
+  function scrollToTopButton() {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'scroll-top';
+    btn.setAttribute('aria-label', 'Back to top');
+    btn.innerHTML =
+      '<svg class="icon" width="28" height="28" aria-hidden="true" focusable="false">' +
+      '<use href="#icon-chevron"></use></svg>';
+    document.body.appendChild(btn);
+
+    var reduced =
+      window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function onScroll() {
+      var y = window.scrollY || document.documentElement.scrollTop || 0;
+      btn.classList.toggle('is-visible', y > 360);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    btn.addEventListener('click', function () {
+      window.scrollTo({
+        top: 0,
+        behavior: reduced ? 'auto' : 'smooth',
+      });
+      btn.blur();
+    });
+  }
+
   function animateStats() {
     var nums = document.querySelectorAll('[data-count]');
     if (!nums.length || !('IntersectionObserver' in window)) return;
@@ -96,6 +126,7 @@
     tabs();
     reveal();
     animateStats();
+    scrollToTopButton();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

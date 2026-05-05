@@ -1,0 +1,42 @@
+# Optional: daily posts sync (commits generated HTML + blogs.json + sitemap).
+# Secrets: STRAPI_API_URL, STRAPI_API_TOKEN. Add SITE_DOMAIN for multi-tenant APIs,
+# or set env SKIP_POSTS_SITE_FILTER=1 on the job for single-tenant.
+# Deploy separately with `npm run deploy` or wire Cloudflare Git integration.
+name: Daily blog sync
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Sync posts from API
+        env:
+          STRAPI_API_URL: ${{ secrets.STRAPI_API_URL }}
+          STRAPI_API_TOKEN: ${{ secrets.STRAPI_API_TOKEN }}
+          SITE_DOMAIN: ${{ secrets.SITE_DOMAIN }}
+        run: npm run sync
+
+      - name: Backfill internal links
+        run: npm run backfill:force
+
+      - name: Commit generated blog files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/data/blogs.json blog sitemap.xml || true
+          git diff --staged --quiet || (git commit -m "chore: sync blog from Strapi" && git push)

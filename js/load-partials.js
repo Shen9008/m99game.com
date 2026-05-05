@@ -1,5 +1,5 @@
 /**
- * M99Game — inject shared chrome (header, footer, optional CTA) + SVG sprite.
+ * M99Game - inject shared chrome (header, footer, optional CTA) + SVG sprite.
  */
 (function () {
   'use strict';
@@ -67,9 +67,9 @@
   function run() {
     document.body.insertAdjacentHTML('afterbegin', spriteHtml());
     Promise.all([
-      fetch('partials/header.html').then(function (r) { return r.text(); }),
-      fetch('partials/footer.html').then(function (r) { return r.text(); }),
-      fetch('partials/cta-banner.html').then(function (r) { return r.text(); })
+      fetch('/partials/header.html').then(function (r) { return r.text(); }),
+      fetch('/partials/footer.html').then(function (r) { return r.text(); }),
+      fetch('/partials/cta-banner.html').then(function (r) { return r.text(); })
     ])
       .then(function (parts) {
         injectHeader(parts[0]);

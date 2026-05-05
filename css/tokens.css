@@ -1,4 +1,4 @@
-/* M99Game design tokens — black + neon green theme */
+/* M99Game design tokens - black + neon green theme */
 :root {
   --m99-deep: #020202;
   --m99-panel: #0a0a0a;
@@ -31,7 +31,7 @@
   --space-md: 1.25rem;
   --space-lg: 2rem;
   --space-xl: 3.5rem;
-  /* Layout rhythm (vertical stacking) — generous gaps between sections for readability */
+  /* Layout rhythm (vertical stacking) - generous gaps between sections for readability */
   --section-pad-y: clamp(2.25rem, 5vw, 3.25rem);
   --section-pad-y-first: clamp(2.5rem, 5.5vw, 3.5rem);
   --section-pad-y-tight: clamp(1.75rem, 3.5vw, 2.5rem);
