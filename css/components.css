@@ -99,11 +99,28 @@
   border-radius: var(--radius-md);
   border: 1px solid rgba(57, 255, 20, 0.2);
 }
+/* Drawer menu below 1120px: full horizontal nav is too cramped (e.g. 1024px tablets). */
 .nav { display: none; }
-@media (min-width: 960px) {
-  .nav { display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; }
+@media (min-width: 1120px) {
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: nowrap;
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: center;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
 }
 .nav__link {
+  flex-shrink: 0;
   padding: 0.5rem 0.85rem;
   border-radius: var(--radius-sm);
   color: var(--m99-muted);
@@ -127,6 +144,13 @@
   box-shadow: var(--m99-glow);
 }
 @media (min-width: 960px) { .header__cta { display: inline-flex; } }
+@media (min-width: 960px) and (max-width: 1119px) {
+  /* Logo left; CTA + menu stay grouped on the right while nav is drawer-only. */
+  .header__cta { margin-left: auto; }
+}
+@media (min-width: 1120px) {
+  .header__cta { margin-left: 0; }
+}
 
 .mobile-toggle {
   display: flex;
@@ -139,7 +163,7 @@
   color: var(--m99-text);
   cursor: pointer;
 }
-@media (min-width: 960px) { .mobile-toggle { display: none; } }
+@media (min-width: 1120px) { .mobile-toggle { display: none; } }
 .mobile-menu {
   display: none;
   border-top: 1px solid var(--m99-border);
