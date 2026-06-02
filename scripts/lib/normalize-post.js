@@ -1,5 +1,7 @@
 'use strict';
 
+const { resolvePostImage } = require('./blog-image.js');
+
 const INTENT_GRADIENTS = {
   navigational: 'linear-gradient(135deg, var(--m99-deep) 0%, var(--m99-gold-dim) 50%, var(--m99-gold) 100%)',
   commercial: 'linear-gradient(135deg, var(--m99-gold-dim) 0%, var(--m99-accent) 55%, var(--m99-accent-bright) 100%)',
@@ -45,6 +47,7 @@ function normalizePost(strapiPost, opts = {}) {
     reading_time: formatReadingTime(strapiPost.reading_time),
     excerpt: strapiPost.shortDescription || strapiPost.excerpt || '',
     placeholder_gradient: strapiPost.placeholder_gradient || gradient,
+    image: resolvePostImage(strapiPost),
     related_posts: opts.relatedPosts || [],
     keywords: normalizeKeywords(strapiPost.keywords),
 

@@ -6,6 +6,25 @@
 
   var SIDEBAR_RECENT_COUNT = 3;
 
+  function compareBlogs(a, b) {
+    var hasSyncedA = Boolean(a.synced_at);
+    var hasSyncedB = Boolean(b.synced_at);
+    if (hasSyncedA && !hasSyncedB) return -1;
+    if (!hasSyncedA && hasSyncedB) return 1;
+    if (hasSyncedA && hasSyncedB) {
+      var tb = new Date(b.synced_at).getTime();
+      var ta = new Date(a.synced_at).getTime();
+      if (tb !== ta) return tb - ta;
+    }
+    var pb = new Date(b.published_date || 0).getTime();
+    var pa = new Date(a.published_date || 0).getTime();
+    if (pb !== pa) return pb - pa;
+    var cb = new Date(b.cms_updated_at || 0).getTime();
+    var ca = new Date(a.cms_updated_at || 0).getTime();
+    if (cb !== ca) return cb - ca;
+    return String(b.slug).localeCompare(String(a.slug));
+  }
+
   function esc(s) {
     var d = document.createElement('div');
     d.textContent = s;
@@ -30,7 +49,7 @@
     var relatedSection = document.getElementById('related-posts');
     if (!sidebarEl && !relatedSection) return;
 
-    loadJson('/assets/data/blogs.json')
+    loadJson('/assets/data/blogs.json?v=sync-sort-2')
       .then(function (blogs) {
         if (!Array.isArray(blogs)) blogs = [];
 
@@ -44,12 +63,7 @@
             .filter(function (b) {
               return b.slug && b.slug !== slug;
             })
-            .sort(function (a, b) {
-              var tb = new Date(b.synced_at || b.published_date || 0).getTime();
-              var ta = new Date(a.synced_at || a.published_date || 0).getTime();
-              if (tb !== ta) return tb - ta;
-              return String(b.slug).localeCompare(String(a.slug));
-            })
+            .sort(compareBlogs)
             .slice(0, SIDEBAR_RECENT_COUNT);
 
           if (recent.length === 0) {

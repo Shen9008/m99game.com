@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env.local') });
 
 const API_BASE = process.env.STRAPI_API_URL || 'http://localhost:1337/api';
@@ -31,7 +32,7 @@ function getPostsSyncConfig(opts = {}) {
   if (rawKey === undefined || rawKey === null) {
     filterKey = DEFAULT_FILTER_KEY;
   } else {
-    filterKey = String(rawKey).trim();
+    filterKey = String(rawKey).trim() || DEFAULT_FILTER_KEY;
   }
 
   const applySiteFilter = Boolean(siteDomain && !skipFilter && filterKey);
@@ -118,8 +119,31 @@ async function fetchPosts(opts = {}) {
   return allPosts;
 }
 
+/**
+ * When SYNC_REQUIRE_SITE_FILTER=1, fail if site filter would not be applied.
+ * @param {object} cfg - from getPostsSyncConfig()
+ */
+function assertSiteFilterRequired(cfg) {
+  const required = /^1|true|yes$/i.test(String(process.env.SYNC_REQUIRE_SITE_FILTER || '').trim());
+  if (!required) return;
+
+  if (!cfg.siteDomain) {
+    throw new Error('SYNC_REQUIRE_SITE_FILTER=1 but SITE_DOMAIN is empty.');
+  }
+  if (cfg.skipFilter) {
+    throw new Error('SYNC_REQUIRE_SITE_FILTER=1 but SKIP_POSTS_SITE_FILTER is enabled.');
+  }
+  if (!cfg.filterKey) {
+    throw new Error('SYNC_REQUIRE_SITE_FILTER=1 but POSTS_SITE_FILTER_KEY is empty.');
+  }
+  if (!cfg.applySiteFilter) {
+    throw new Error('SYNC_REQUIRE_SITE_FILTER=1 but site filter is not applied.');
+  }
+}
+
 module.exports = {
   fetchPosts,
   getPostsSyncConfig,
   buildSamplePostsUrl,
+  assertSiteFilterRequired,
 };

@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { normalizePost, validatePost } = require('./normalize-post.js');
 const { injectInternalLinks } = require('./inject-internal-links.js');
+const { buildFeaturedMediaHtml } = require('./blog-image.js');
 
 const ROOT = path.resolve(__dirname, '../..');
 const TEMPLATE_PATH = path.join(ROOT, 'scripts/templates/article.template.html');
@@ -159,6 +160,7 @@ function renderArticle(normalized, opts = {}) {
     '{{UPDATED_DATE_ISO}}': normalized.updated_date_iso || normalized.published_date || '',
     '{{READING_TIME}}': normalized.reading_time || '5 min read',
     '{{EXCERPT}}': normalized.excerpt || '',
+    '{{FEATURED_MEDIA}}': buildFeaturedMediaHtml(normalized),
     '{{PLACEHOLDER_GRADIENT}}': normalized.placeholder_gradient || 'linear-gradient(135deg, var(--m99-gold-dim) 0%, var(--m99-gold) 45%, var(--m99-mint) 100%)',
     '{{FOCUS_KEYWORD}}': normalized.focus_keyword || normalized.title,
     '{{TOC_HTML}}': tocHtml,
