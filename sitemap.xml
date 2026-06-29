@@ -10,6 +10,12 @@
   <url><loc>https://m99game.com/blog/</loc><lastmod>2026-05-24</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <!-- Blog Posts -->
   <url>
+    <loc>https://m99game.com/blog/m99game-access-problems-explained-for-returning-players/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://m99game.com/blog/lights-sounds-action-game-design-in-m99game/</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>monthly</changefreq>
