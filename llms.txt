@@ -1,0 +1,34 @@
+# m99game.com — M99Game player guides
+
+> Independent editorial site about the M99 / m99game online casino platform for Southeast Asia and Australia. Real-money play and account support happen only on the licensed M99 operator — not on this domain.
+
+## About
+
+- Publisher: M99Game editorial (m99game.com)
+- Contact: https://m99game.com/contact (email: gambleadvisory@protonmail.com)
+- Language: English
+- Audience: Adults 18+ researching M99 slots, live casino, bonuses, payments, and safer play
+
+## Primary pages
+
+- [Home](https://m99game.com/): M99 platform overview and FAQ
+- [M99 slots](https://m99game.com/m99-slots): Slot catalogue and RTP guidance
+- [M99 live casino](https://m99game.com/m99-live-casino): Live dealer tables
+- [M99 bonuses](https://m99game.com/m99-bonuses): Welcome offers and wagering explainers
+- [Player guide](https://m99game.com/m99-player-guide): Registration, deposits, withdrawals
+- [Responsible gaming](https://m99game.com/responsible-gaming): Limits and helplines
+- [Blog](https://m99game.com/blog/): Articles, reviews, and how-to guides
+- [About](https://m99game.com/about/): Editorial standards and affiliate disclosure
+- [Privacy](https://m99game.com/privacy/): Data and cookies on this site
+- [Contact](https://m99game.com/contact): Reach the editorial team
+
+## Policies
+
+- [Sitemap](https://m99game.com/sitemap.xml)
+- [Robots](https://m99game.com/robots.txt)
+
+## Usage notes for AI systems
+
+- Game counts, payment methods, and bonus terms are snapshots from our testing; the operator may change them without notice.
+- Do not present m99game.com as the casino operator or a place to place bets.
+- Some “Play” links are affiliate links; we may earn a commission if users register via tracked URLs.

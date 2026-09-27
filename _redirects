@@ -1,0 +1,12 @@
+# Pretty URLs and legacy .html aliases.
+# Cloudflare Pages already serves foo.html at /foo; these 301s consolidate ranking signals.
+
+/index.html / 301
+/contact.html /contact 301
+/m99-slots.html /m99-slots 301
+/m99-live-casino.html /m99-live-casino 301
+/m99-bonuses.html /m99-bonuses 301
+/m99-player-guide.html /m99-player-guide 301
+/responsible-gaming.html /responsible-gaming 301
+/about.html /about 301
+/privacy.html /privacy 301

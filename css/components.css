@@ -42,6 +42,9 @@
 /* Tight gap before next block inside a section (replaces ad-hoc inline margins) */
 .flow-gap-top { margin-top: var(--space-lg); }
 
+#partial-header {
+  min-height: calc(72px + env(safe-area-inset-top, 0px));
+}
 .site-header {
   position: sticky;
   top: 0;
@@ -826,6 +829,17 @@
 }
 .cta-banner h2 { margin: 0 0 var(--space-sm); font-family: var(--font-display); font-size: clamp(1.25rem, 3vw, 1.6rem); }
 .cta-banner p { margin: 0 auto var(--space-md); color: var(--m99-muted); font-size: 0.98rem; line-height: 1.65; max-width: 62ch; }
+.cta-banner__disclosure,
+.hero__disclosure,
+.footer__affiliate {
+  margin: 0.75rem auto 0;
+  font-size: 0.8rem;
+  color: var(--m99-muted);
+  line-height: 1.5;
+  max-width: 58ch;
+}
+.hero__disclosure { margin-left: 0; }
+.footer__affiliate { margin: 0.75rem 0 0; }
 
 .footer {
   margin-top: var(--space-xl);

@@ -14,7 +14,9 @@
     "backfill": "node scripts/backfill-internal-links.js",
     "backfill:force": "node scripts/backfill-internal-links.js --force",
     "audit:links": "node scripts/audit-internal-links.js",
-    "deploy": "npx wrangler pages deploy . --project-name=m99game --branch=main",
+    "inject-chrome": "node scripts/lib/inject-chrome.js",
+    "indexnow": "node scripts/indexnow-ping.mjs",
+    "deploy": "node scripts/lib/inject-chrome.js && npx wrangler pages deploy . --project-name=m99game --branch=main",
     "serve": "serve ."
   },
   "keywords": [
@@ -31,6 +33,6 @@
     "glob": "^13.0.6",
     "serve": "^14.2.4",
     "sharp": "^0.34.5",
-    "wrangler": "^4.80.0"
+    "wrangler": "^4.134.0"
   }
 }

@@ -1,5 +1,7 @@
 /**
  * M99Game - inject shared chrome (header, footer, optional CTA) + SVG sprite.
+ * Header/footer/CTA are inlined at build time (see scripts/lib/inject-chrome.js)
+ * so crawlers see nav links without executing this file. Fetch is a fallback.
  */
 (function () {
   'use strict';
@@ -64,23 +66,44 @@
     });
   }
 
+  function emptyPlaceholder(id) {
+    var el = document.getElementById(id);
+    return !!(el && !el.querySelector('*') && !(el.textContent || '').trim());
+  }
+
+  function finish() {
+    setActiveNav();
+    wireMobileMenu();
+    document.dispatchEvent(new CustomEvent('m99:partials-ready'));
+  }
+
   function run() {
     document.body.insertAdjacentHTML('afterbegin', spriteHtml());
-    Promise.all([
-      fetch('/partials/header.html').then(function (r) { return r.text(); }),
-      fetch('/partials/footer.html').then(function (r) { return r.text(); }),
-      fetch('/partials/cta-banner.html').then(function (r) { return r.text(); })
-    ])
+
+    var needHeader = !document.querySelector('.site-header') && emptyPlaceholder('partial-header');
+    var needFooter = !document.querySelector('.footer') && emptyPlaceholder('partial-footer');
+    var needCta = emptyPlaceholder('partial-cta') && document.body.getAttribute('data-no-cta') !== 'true';
+
+    if (!needHeader && !needFooter && !needCta) {
+      finish();
+      return;
+    }
+
+    var fetches = [
+      needHeader ? fetch('/partials/header.html').then(function (r) { return r.text(); }) : Promise.resolve(null),
+      needFooter ? fetch('/partials/footer.html').then(function (r) { return r.text(); }) : Promise.resolve(null),
+      needCta ? fetch('/partials/cta-banner.html').then(function (r) { return r.text(); }) : Promise.resolve(null)
+    ];
+
+    Promise.all(fetches)
       .then(function (parts) {
-        injectHeader(parts[0]);
-        injectFooter(parts[1]);
-        injectCta(parts[2]);
-        setActiveNav();
-        wireMobileMenu();
-        document.dispatchEvent(new CustomEvent('m99:partials-ready'));
+        if (parts[0]) injectHeader(parts[0]);
+        if (parts[1]) injectFooter(parts[1]);
+        if (parts[2]) injectCta(parts[2]);
+        finish();
       })
       .catch(function () {
-        setActiveNav();
+        finish();
       });
   }
 

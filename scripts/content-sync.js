@@ -7,6 +7,7 @@ const { fetchPosts, getPostsSyncConfig, assertSiteFilterRequired } = require('./
 const { normalizePost, validatePost } = require('./lib/normalize-post.js');
 const { renderArticle } = require('./lib/render-article.js');
 const { generateSitemap } = require('./lib/generate-sitemap.js');
+const { injectChrome } = require('./lib/inject-chrome.js');
 
 const ROOT = path.resolve(__dirname, '..');
 const BLOGS_JSON_PATH = path.join(ROOT, 'assets/data/blogs.json');
@@ -242,7 +243,9 @@ async function run() {
 
   saveBlogsJson(blogs);
   generateSitemap();
+  const chrome = injectChrome();
   console.log('Done. blogs.json and sitemap.xml updated.');
+  console.log(`Chrome inlined on ${chrome.changed} HTML file(s).`);
 }
 
 run().catch((err) => {
