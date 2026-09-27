@@ -39,13 +39,20 @@ const CLEAN_URL_REPLACEMENTS = [
   ['href="m99-slots.html', 'href="/m99-slots'],
 ];
 
-const EMAIL_PLAIN = '<span class="contact-email">gambleadvisory@protonmail.com</span>';
+const EMAIL_OBFUSCATED =
+  '<span class="contact-email">gambleadvisory&nbsp;[at]&nbsp;protonmail&nbsp;[dot]&nbsp;com</span>';
+const EMAIL_PLAIN = EMAIL_OBFUSCATED;
+const EMAIL_SPAN_RAW = /<span class="contact-email">gambleadvisory@protonmail.com<\/span>/g;
 const EMAIL_MAILTO = /<a href="mailto:gambleadvisory@protonmail.com">gambleadvisory@protonmail.com<\/a>/g;
 const EMAIL_OFF_BLOCK =
   /<!--email_off--><a href="mailto:gambleadvisory@protonmail.com">gambleadvisory@protonmail.com<\/a><!--email_on-->/g;
 
 function stripMailtoLinks(html) {
-  return html.replace(EMAIL_OFF_BLOCK, EMAIL_PLAIN).replace(EMAIL_MAILTO, EMAIL_PLAIN);
+  return html
+    .replace(EMAIL_OFF_BLOCK, EMAIL_PLAIN)
+    .replace(EMAIL_MAILTO, EMAIL_PLAIN)
+    .replace(EMAIL_SPAN_RAW, EMAIL_OBFUSCATED)
+    .replace(/gambleadvisory@protonmail\.com/g, 'gambleadvisory [at] protonmail [dot] com');
 }
 
 function readPartial(name) {
@@ -98,8 +105,6 @@ function injectChrome(opts = {}) {
   for (const file of files) {
     const rel = path.relative(ROOT, file).replace(/\\/g, '/');
     if (rel.startsWith('partials/')) continue;
-    if (rel === 'contact.html') continue;
-
     let html = fs.readFileSync(file, 'utf8');
     const original = html;
 
