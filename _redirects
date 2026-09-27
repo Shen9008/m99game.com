@@ -1,6 +1,7 @@
 # Pretty URLs and legacy .html aliases.
 # Cloudflare Pages already serves foo.html at /foo; these 301s consolidate ranking signals.
 
+/sitemap /sitemap.xml 301
 /index.html / 301
 /contact.html /contact/ 301
 /contact /contact/ 301
